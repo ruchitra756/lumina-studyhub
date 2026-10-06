@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumina StudyHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/studyhub.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side" id="side">
+    <a class="brand" href="#/"><span class="brand-mark">L</span><span>Lumina</span></a>
+    <nav id="nav">
+      <a href="#/" data-nav="/">Home</a>
+      <a href="#/upload" data-nav="/upload">Add material</a>
+      <a href="#/library" data-nav="/library">Library <span class="pill teal" id="proc-pill" hidden></span></a>
+      <a href="#/review" data-nav="/review">Review cards <span class="pill" id="due-pill" hidden></span></a>
+      <a href="#/ask" data-nav="/ask">Ask everything</a>
+      <a href="#/history" data-nav="/history">History</a>
+      <a href="#/progress" data-nav="/progress">Progress</a>
+    </nav>
+    <div class="side-foot" id="health"></div>
+  </aside>
+  <main class="main">
+    <button class="menu-btn" id="menu-btn" aria-label="Menu">Menu</button>
+    <div id="view"></div>
+  </main>
+</div>
+<div id="toasts"></div>
+<script src="/js/core.js"></script>
+<script src="/js/charts.js"></script>
+<script src="/js/views_main.js"></script>
+<script src="/js/views_item.js"></script>
+<script>boot();</script>
+</body>
+</html>

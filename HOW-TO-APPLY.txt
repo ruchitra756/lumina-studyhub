@@ -1,0 +1,7 @@
+HOW TO APPLY THIS UPDATE
+1. Close the app window (terminal).
+2. Copy everything inside this zip's 'lumina-studyhub' folder into your existing lumina-studyhub folder.
+   Choose 'Replace the files'.
+3. Do NOT delete anything. Your .env and workspace folder stay untouched.
+4. Start the app again with start_studyhub.bat. No new packages are needed.
+5. Optional: add the new video lines from .env.example to your own .env (all have safe defaults).
