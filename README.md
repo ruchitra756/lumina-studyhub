@@ -4,8 +4,9 @@ AI study assistant. Upload a lecture video, audio, PDF, photo of notes or text f
 
 ![Library](docs/library.png)
 ![Notes](docs/notes.png)
+![Mind map](docs/mindmap.svg)
 ![Flashcards](docs/flashcards.png)
-![Tutor](docs/tutor.png)
+![Ask everything](docs/ask.png)
 
 ## Features
 
