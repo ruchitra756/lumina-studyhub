@@ -1,8 +1,24 @@
 # Lumina StudyHub
 
-An AI study assistant. Upload a lecture video, audio, PDF, photo of notes or text file and get notes, flashcards,
-quizzes, mind maps, an audio recap, a revision sheet, a 7-day plan, an exam bundle, a concept map and an AI tutor
-that answers from your own material and shows where each answer came from.
+AI study assistant. Upload a lecture video, audio, PDF, photo of notes or text file, and get notes, flashcards, quizzes, mind maps, and an AI tutor that answers from your own material and shows where each answer came from.
+
+![Library](docs/library.png)
+![Notes](docs/notes.png)
+![Flashcards](docs/flashcards.png)
+![Tutor](docs/tutor.png)
+
+## Features
+
+- Notes, flashcards, quizzes, mind maps, audio recap, revision sheet, 7-day plan, exam bundle and concept map
+- Hindi/English transcription with noise reduction
+- AI tutor with page/timestamp citations and a confidence score
+- SM-2 spaced repetition
+- Handles long lectures (up to 6 hours) with chunking, background processing and resume
+- Progress tracking, streaks and achievements
+
+## Tech stack
+
+Python, FastAPI, JavaScript, SQLite, faster-whisper, PyMuPDF, ffmpeg, Gemini API
 
 ## Set up (Windows, about 10 minutes)
 
@@ -12,15 +28,13 @@ that answers from your own material and shows where each answer came from.
 4. In this folder, copy `.env.example` to `.env` and paste the key after `GEMINI_API_KEY=`.
 5. Double-click `start_studyhub.bat` (first run installs everything and takes a few minutes).
    Or manually:
-   ```
+```
    python -m venv .lumina_env
    .lumina_env\Scripts\activate
    pip install -r requirements.txt
    python launch.py
-   ```
+```
 6. The browser opens at http://127.0.0.1:8000.
-
-This project uses its own virtual environment (`.lumina_env`), so it does not touch your old project.
 
 ## How it works
 
@@ -73,7 +87,7 @@ video -> ffprobe (length, has audio?) -> extract audio ONCE (fast, real progress
   limits; if they are hit, the app waits, retries, tries backup models, and otherwise tells you which parts are saved.
   Audio sent to Gemini leaves your computer; use `local` for private material.
 
-## Why generation is fast (and how to see where time goes)
+## Why generation is fast
 
 - **Notes** are planned first (4-12 sections depending on length), then every section is written at the same time
   (`GEMINI_PARALLEL`). Quality is the same or better: each section gets its own full-depth write-up.
@@ -83,8 +97,6 @@ video -> ffprobe (length, has audio?) -> extract audio ONCE (fast, real progress
   step, and cached. After that every feature reuses it. Two requests never repeat the same condensing work.
 - **Scanned PDF pages** are read by the AI several at a time instead of one by one.
 - **Live progress**: generation shows the real stage ("Planning the sections", "Writing sections (3/6)") and elapsed time.
-- **Timing lines**: the terminal window prints one line per AI request, for example
-  `[gemini] notes-section: gemini-3.8-flash 14.2s in=9000 out=1500 thinking=210`. If something is slow, send me those lines.
 
 ## Troubleshooting
 
@@ -93,9 +105,3 @@ video -> ffprobe (length, has audio?) -> extract audio ONCE (fast, real progress
 - **Rate limit messages**: the app retries automatically; free keys have per-minute limits. Wait a minute.
 - **Hindi audio recognised as English (or the reverse)**: choose the language on the Add material page.
 - **Audio recap silent for Hindi**: install a Hindi voice in Windows Settings > Time & language > Speech.
-
-## Resume line
-
-*Lumina StudyHub: multilingual (Hindi/English) AI study assistant. Built a RAG pipeline (Gemini embeddings, hybrid
-retrieval, page/timestamp citations, confidence scoring), Whisper speech-to-text with noise reduction, map-reduce
-summarisation for long documents, SM-2 spaced repetition, and a FastAPI + JavaScript web app.*
